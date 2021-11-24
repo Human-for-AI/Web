@@ -1,7 +1,7 @@
 import { useRecoilValue } from "recoil";
 import { imageState } from "../../recoil/image";
-import icon from "../../assets/imageIcon.svg";
 import useImageInputBox from "../../hooks/useImageInputBox";
+import icon from "../../assets/imageIcon.svg";
 import "./ImageUpload.scss";
 
 const ImageUpload = () => {
