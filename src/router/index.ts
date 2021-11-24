@@ -1,2 +1,2 @@
-import RootRouter from "./RootRouter";
+import RootRouter from "./MainRouter";
 export default RootRouter;
