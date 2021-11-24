@@ -1,6 +1,11 @@
 import React from "react";
-const MainBackground = () => {
-  return <div id={"Main"}></div>;
+import "./styles.scss";
+
+type PropType = {
+  children: React.ReactNode;
+};
+const MainBackground = ({ children }: PropType): JSX.Element => {
+  return <div id={"Main"} />;
 };
 
 export default MainBackground;

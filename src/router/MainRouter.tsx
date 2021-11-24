@@ -1,12 +1,12 @@
 import React, { FC } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { MainBackground } from "../components";
+import { TakePicturePage } from "../pages";
 const MainRouter: FC = (): JSX.Element => {
   return (
     <BrowserRouter>
       <div>
         <Routes>
-          <Route element={<MainBackground />} />
+          <Route path="/take-picture" element={<TakePicturePage />} />
         </Routes>
       </div>
     </BrowserRouter>
