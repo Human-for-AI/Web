@@ -1,1 +1,1 @@
-export {default as MainBackground} from './Background/MainBackground'
+export {default as TakePicture} from './TakePicture/TakePicture'
