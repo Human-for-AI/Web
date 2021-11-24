@@ -16,6 +16,7 @@ const ImageUpload = () => {
       <div className="imageInputBox-input">
         <div className="imageInputBox-input-view">
           {!imageUrl ? (
+            // 추후 기본 사진으로 변경
             <img src={icon} alt="images" />
           ) : (
             <img src={imageUrl} alt="image" />
