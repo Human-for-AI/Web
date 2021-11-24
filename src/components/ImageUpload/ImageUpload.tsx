@@ -13,37 +13,36 @@ const ImageUpload = () => {
 
   return (
     <div className="imageInputBox">
-      <div className="imageInputBox-input">
-        <div className="imageInputBox-input-view">
+      {/* 이미지 띄워주는 화면으로 이동 예정
+      <div className="imageInputBox-input-view">
           {!imageUrl ? (
             // 추후 기본 사진으로 변경
             <img src={icon} alt="images" />
           ) : (
             <img src={imageUrl} alt="image" />
           )}
-        </div>
-        <div
-          className={
-            isDragging
-              ? "imageInputBox-input-inputBox-dragging"
-              : "imageInputBox-input-inputBox"
-          }
-          ref={dragRef}
-        >
-          <label className="imageInputBox-input-file" htmlFor="fileUpload">
-            <img src={icon} alt="icon" />
-            <div>이미지를 드래그하거나 파일을 선택해주세요</div>
-            <input
-              className="imageInputBox-input-btn"
-              type="file"
-              id="fileUpload"
-              style={{ display: "none" }}
-              accept="image/*"
-              multiple={false}
-              onChange={onChangeFiles}
-            />
-          </label>
-        </div>
+        </div> */}
+      <div
+        className={
+          isDragging
+            ? "imageInputBox-inputBox-dragging"
+            : "imageInputBox-inputBox"
+        }
+        ref={dragRef}
+      >
+        <label className="imageInputBox-file" htmlFor="fileUpload">
+          <img src={icon} alt="icon" />
+          <div>이미지를 드래그하거나 파일을 선택해주세요</div>
+          <input
+            className="imageInputBox-btn"
+            type="file"
+            id="fileUpload"
+            style={{ display: "none" }}
+            accept="image/*"
+            multiple={false}
+            onChange={onChangeFiles}
+          />
+        </label>
       </div>
       <div className="imageInputBox-button">
         <button style={{ backgroundColor: "#E9E9E9", color: "#777575" }}>
