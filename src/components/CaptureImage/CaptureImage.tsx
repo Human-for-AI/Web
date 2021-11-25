@@ -4,16 +4,6 @@ import { CameraIcon, BackPage } from "../../assets";
 import { useNavigate } from "react-router";
 import Webcam from "react-webcam";
 const CaptureImage = (): JSX.Element => {
-  // audio 작업 부분
-  /*const audioURL = "../../assets/audio/CountDown.mp3";
-  const audioRef = React.useRef(typeof Audio !== "undefined" && new Audio());
-  const audio: HTMLAudioElement = audioRef.current as HTMLAudioElement;
-
-  useEffect(() => {
-    if (audio) {
-      audio.src = audioURL;
-    }
-  }, [audio]);*/
   const navigate = useNavigate();
   // webcam
   const webcamRef = React.useRef<Webcam>(null);
@@ -22,13 +12,8 @@ const CaptureImage = (): JSX.Element => {
     if (webcamRef !== null && webcamRef.current !== null) {
       const imageSrc = webcamRef.current.getScreenshot();
       setImgSrc(imageSrc);
-
-      //audio.play();
-      const captureAfter3s = () => {
-        alert("사진이 찍혔습니다.");
-        navigate("/image");
-      };
-      setTimeout(captureAfter3s, 3000);
+      alert("사진이 찍혔습니다.");
+      navigate("/image");
     }
   };
   React.useEffect(() => {

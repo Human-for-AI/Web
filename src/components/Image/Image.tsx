@@ -4,11 +4,13 @@ import img from "../../assets/favicon.png";
 import { imageState } from "../../recoil/image";
 import { useCallback, useEffect } from "react";
 import "./Image.scss";
-
+import { postUploadImage } from "../../util/api";
+let fileFormData = new FormData();
 const Image = () => {
   const navigate = useNavigate();
-  const [profileImage, setProfileImage] =
-    useRecoilState<File | undefined>(imageState);
+  const [profileImage, setProfileImage] = useRecoilState<File | undefined>(
+    imageState
+  );
 
   let imageUrl: string | undefined = undefined;
   if (profileImage) imageUrl = URL.createObjectURL(profileImage);
@@ -20,6 +22,13 @@ const Image = () => {
   }, [profileImage]);
 
   const handleButton = () => {
+    //postUploadImage() formData 보내기
+    if (!profileImage) {
+      alert("에러가 발생하였습니다.");
+      return;
+    }
+    fileFormData.append("file", profileImage);
+    postUploadImage(fileFormData);
     navigate("/result");
   };
 
