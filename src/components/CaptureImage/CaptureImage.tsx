@@ -7,16 +7,6 @@ import { imageUrlState } from "../../recoil/image";
 import "./styles.scss";
 
 const CaptureImage = (): JSX.Element => {
-  // audio 작업 부분
-  /*const audioURL = "../../assets/audio/CountDown.mp3";
-  const audioRef = React.useRef(typeof Audio !== "undefined" && new Audio());
-  const audio: HTMLAudioElement = audioRef.current as HTMLAudioElement;
-
-  useEffect(() => {
-    if (audio) {
-      audio.src = audioURL;
-    }
-  }, [audio]);*/
   const navigate = useNavigate();
   // webcam
   const webcamRef = React.useRef<Webcam>(null);

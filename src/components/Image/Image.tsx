@@ -3,7 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { imageState, imageUrlState } from "../../recoil/image";
 import "./Image.scss";
-
+import { postUploadImage } from "../../util/api";
+let fileFormData = new FormData();
 const Image = () => {
   const navigate = useNavigate();
   const [profileImage, setProfileImage] =
@@ -21,6 +22,13 @@ const Image = () => {
   }, [imageUrl]);
 
   const handleButton = () => {
+    //postUploadImage() formData 보내기
+    if (!profileImage) {
+      alert("에러가 발생하였습니다.");
+      return;
+    }
+    fileFormData.append("file", profileImage);
+    postUploadImage(fileFormData);
     navigate("/result");
   };
 
