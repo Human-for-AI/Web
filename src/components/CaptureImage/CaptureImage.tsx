@@ -21,7 +21,7 @@ const CaptureImage = (): JSX.Element => {
         alert("사진이 찍혔습니다.");
         navigate("/image");
       };
-      setTimeout(captureAfter3s, 3000);
+      setTimeout(captureAfter3s, 10);
     }
   };
   React.useEffect(() => {
