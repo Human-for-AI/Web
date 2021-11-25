@@ -4,10 +4,10 @@ import "./styles.scss";
 type PropType = {
   children: React.ReactNode;
 };
-const MainBackground = ({ children }: PropType): JSX.Element => {
-  return <div id={"Main"}>
+const ResultBackground = ({ children }: PropType): JSX.Element => {
+  return <div id={"Result"}>
     {children}
   </div>;
 };
 
-export default MainBackground;
+export default ResultBackground;
