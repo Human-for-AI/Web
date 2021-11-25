@@ -9,7 +9,7 @@ const CaptureImage = (): JSX.Element => {
   const navigate = useNavigate();
   const [imgSrc, setImgSrc] = useState<string | null>(null);
 
-  const capture = React.useCallback(() => {
+  const capture = () => {
     if (webcamRef !== null && webcamRef.current !== null) {
       const imageSrc = webcamRef.current.getScreenshot();
       setImgSrc(imageSrc);
@@ -17,9 +17,9 @@ const CaptureImage = (): JSX.Element => {
         alert("사진이 찍혔습니다.");
         navigate("/result");
       };
-      setInterval(captureAfter3s, 3000);
+      setTimeout(captureAfter3s, 3000);
     }
-  }, [webcamRef, navigate]);
+  };
 
   useEffect(() => {
     console.log(imgSrc);
@@ -28,9 +28,16 @@ const CaptureImage = (): JSX.Element => {
   const goBackPage = () => {
     navigate("/");
   };
+  React.useEffect(() => {
+    window.addEventListener("keydown", (event) => {
+      if (event.keyCode === 32) {
+        capture();
+      }
+    });
+  });
   return (
     <div>
-      <div className={"goBackPage"} onClick={goBackPage}>
+      <div className={"goBackPage"} onKeyUp={goBackPage}>
         <img src={BackPage} alt="" />
         <span>사진 선택하기</span>
       </div>
