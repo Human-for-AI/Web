@@ -19,7 +19,7 @@ const ImageUpload = () => {
   }, [profileImage]);
 
   const handleButton = () => {
-    navigate("/take-picture");
+    navigate("/capture-image");
   };
 
   return (
