@@ -1,27 +1,49 @@
 import { useNavigate } from "react-router-dom";
+import { useRecoilState, useRecoilValue } from "recoil";
 import img from "../../assets/favicon.png";
+import { imageState } from "../../recoil/image";
+import { useCallback, useEffect } from "react";
 import "./Image.scss";
 
 const Image = () => {
   const navigate = useNavigate();
+  const [profileImage, setProfileImage] =
+    useRecoilState<File | undefined>(imageState);
 
-  const handleButton = (url: string) => {
-    navigate(url);
+  let imageUrl: string | undefined = undefined;
+  if (profileImage) imageUrl = URL.createObjectURL(profileImage);
+
+  useEffect(() => {
+    if (!profileImage) {
+      navigate("/");
+    }
+  }, [profileImage]);
+
+  const handleButton = () => {
+    navigate("/result");
+  };
+
+  const handleBack = () => {
+    setProfileImage(undefined);
   };
 
   return (
     <div className="image">
       <div className="image-content">
-        <img src={img} alt="img" />
+        {!imageUrl ? (
+          <img src="" alt="다시 선택해주세요" />
+        ) : (
+          <img src={imageUrl} alt="image" />
+        )}
       </div>
       <div className="image-button">
         <button
-          onClick={() => handleButton("/")}
+          onClick={handleBack}
           style={{ backgroundColor: "#E9E9E9", color: "#777575" }}
         >
           다시 선택
         </button>
-        <button onClick={() => handleButton("/result")}>그림 읽기</button>
+        <button onClick={handleButton}>그림 읽기</button>
       </div>
     </div>
   );
