@@ -1,32 +1,35 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./styles.scss";
 import { CameraIcon, BackPage } from "../../assets";
 import { useNavigate } from "react-router";
 import Webcam from "react-webcam";
-
 const CaptureImage = (): JSX.Element => {
-  const webcamRef = React.useRef<Webcam>(null);
-  const navigate = useNavigate();
-  const [imgSrc, setImgSrc] = useState<any>(null);
+  // audio 작업 부분
+  /*const audioURL = "../../assets/audio/CountDown.mp3";
+  const audioRef = React.useRef(typeof Audio !== "undefined" && new Audio());
+  const audio: HTMLAudioElement = audioRef.current as HTMLAudioElement;
 
+  useEffect(() => {
+    if (audio) {
+      audio.src = audioURL;
+    }
+  }, [audio]);*/
+  const navigate = useNavigate();
+  // webcam
+  const webcamRef = React.useRef<Webcam>(null);
+  const [imgSrc, setImgSrc] = useState<any>(null);
   const capture = () => {
     if (webcamRef !== null && webcamRef.current !== null) {
       const imageSrc = webcamRef.current.getScreenshot();
       setImgSrc(imageSrc);
+
+      //audio.play();
       const captureAfter3s = () => {
         alert("사진이 찍혔습니다.");
-        //navigate("/image");
+        navigate("/image");
       };
       setTimeout(captureAfter3s, 3000);
     }
-  };
-
-  useEffect(() => {
-    console.log(imgSrc);
-  }, [imgSrc]);
-
-  const goBackPage = () => {
-    navigate("/");
   };
   React.useEffect(() => {
     window.addEventListener("keydown", (event) => {
@@ -35,6 +38,10 @@ const CaptureImage = (): JSX.Element => {
       }
     });
   });
+  // 페이지 이동
+  const goBackPage = () => {
+    navigate("/");
+  };
   return (
     <div>
       <div className={"goBackPage"} onClick={goBackPage}>
