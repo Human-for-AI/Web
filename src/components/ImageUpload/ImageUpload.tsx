@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { imageState } from "../../recoil/image";
 import useImageInputBox from "../../hooks/useImageInputBox";
@@ -6,6 +7,12 @@ import "./ImageUpload.scss";
 
 const ImageUpload = () => {
   const { isDragging, dragRef, onChangeFiles } = useImageInputBox();
+
+  const navigate = useNavigate();
+
+  const handleButton = () => {
+    navigate("/take-picture");
+  };
   // const profileImage = useRecoilValue<File | undefined>(imageState);
 
   // let imageUrl: string | undefined = undefined;
@@ -44,6 +51,7 @@ const ImageUpload = () => {
           />
         </label>
       </div>
+      <button onClick={handleButton}>사진 찍기</button>
     </div>
   );
 };
