@@ -1,17 +1,19 @@
 import './ImageResult.scss'
 
 const ImageResult = () => {
+  const imageUrl = "https://cdn.discordapp.com/attachments/627298658177515541/904991111796379728/unknown.png";
+
   const recent = [
     {
-      imageUrl: "C://1.jpg",
+      imageUrl: imageUrl,
       title: "abc"
     },
     {
-      imageUrl: "C://1.jpg",
+      imageUrl: imageUrl,
       title: "abc"
     },
     {
-      imageUrl: "C://1.jpg",
+      imageUrl: imageUrl,
       title: "abc"
     }
   ];

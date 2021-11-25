@@ -8,7 +8,7 @@ const MainRouter: FC = (): JSX.Element => {
       <div>
         <Routes>
           <Route path="/take-picture" element={<TakePicturePage />} />
-          <Route path="/" element={<ImageResultPage />} />
+          <Route path="/result" element={<ImageResultPage />} />
         </Routes>
       </div>
     </BrowserRouter>
