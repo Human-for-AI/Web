@@ -1,0 +1,35 @@
+#container {
+  width: 900px;
+  height: 750px;
+  border-radius: 40px;
+}
+#cameraScreen {
+  width: 100%;
+  height: 90%;
+  background-color: white;
+  border-radius: 40px 40px 0 0;
+}
+#filmingBtn {
+  background-color: #6884ff;
+  width: 100%;
+  height: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0 0 40px 40px;
+}
+#filmingBtn:hover {
+  cursor: pointer;
+}
+.goBackPage {
+  color: #808ea9;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  width: 180px;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.goBackPage:hover {
+  cursor: pointer;
+}

@@ -1,1 +1,0 @@
-export {default as TakePicture} from './TakePicture/TakePicture'
