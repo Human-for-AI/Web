@@ -6,10 +6,10 @@ import "./ImageUpload.scss";
 
 const ImageUpload = () => {
   const { isDragging, dragRef, onChangeFiles } = useImageInputBox();
-  const profileImage = useRecoilValue<File | undefined>(imageState);
+  // const profileImage = useRecoilValue<File | undefined>(imageState);
 
-  let imageUrl: string | undefined = undefined;
-  if (profileImage) imageUrl = URL.createObjectURL(profileImage);
+  // let imageUrl: string | undefined = undefined;
+  // if (profileImage) imageUrl = URL.createObjectURL(profileImage);
 
   return (
     <div className="imageInputBox">
@@ -43,12 +43,6 @@ const ImageUpload = () => {
             onChange={onChangeFiles}
           />
         </label>
-      </div>
-      <div className="imageInputBox-button">
-        <button style={{ backgroundColor: "#E9E9E9", color: "#777575" }}>
-          사진 찍기
-        </button>
-        <button>그림 읽기</button>
       </div>
     </div>
   );
