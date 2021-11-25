@@ -4,3 +4,8 @@ export const imageState = atom<File | undefined>({
   key: "imageState",
   default: undefined,
 });
+
+export const imageUrlState = atom<string | undefined>({
+  key: "imageUrlState",
+  default: undefined,
+});

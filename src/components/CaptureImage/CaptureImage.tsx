@@ -1,19 +1,27 @@
-import React, { useState } from "react";
-import "./styles.scss";
-import { CameraIcon, BackPage } from "../../assets";
+import React from "react";
 import { useNavigate } from "react-router";
+import { useSetRecoilState } from "recoil";
 import Webcam from "react-webcam";
+import { CameraIcon, BackPage } from "../../assets";
+import { imageUrlState } from "../../recoil/image";
+import "./styles.scss";
+
 const CaptureImage = (): JSX.Element => {
   const navigate = useNavigate();
   // webcam
   const webcamRef = React.useRef<Webcam>(null);
-  const [imgSrc, setImgSrc] = useState<any>(null);
+  const setImgUrl = useSetRecoilState<any>(imageUrlState);
   const capture = () => {
     if (webcamRef !== null && webcamRef.current !== null) {
       const imageSrc = webcamRef.current.getScreenshot();
-      setImgSrc(imageSrc);
-      alert("사진이 찍혔습니다.");
-      navigate("/image");
+
+      //audio.play();
+      const captureAfter3s = () => {
+        setImgUrl(imageSrc);
+        alert("사진이 찍혔습니다.");
+        navigate("/image");
+      };
+      setTimeout(captureAfter3s, 3000);
     }
   };
   React.useEffect(() => {
