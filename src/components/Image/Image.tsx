@@ -1,23 +1,24 @@
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useRecoilState, useRecoilValue } from "recoil";
-import img from "../../assets/favicon.png";
-import { imageState } from "../../recoil/image";
-import { useCallback, useEffect } from "react";
+import { useRecoilState } from "recoil";
+import { imageState, imageUrlState } from "../../recoil/image";
 import "./Image.scss";
 
 const Image = () => {
   const navigate = useNavigate();
   const [profileImage, setProfileImage] =
     useRecoilState<File | undefined>(imageState);
-
-  let imageUrl: string | undefined = undefined;
-  if (profileImage) imageUrl = URL.createObjectURL(profileImage);
+  const [imageUrl, setImageUrl] =
+    useRecoilState<string | undefined>(imageUrlState);
+  if (profileImage) setImageUrl(URL.createObjectURL(profileImage));
 
   useEffect(() => {
-    if (!profileImage) {
+    console.log(imageUrl, profileImage);
+
+    if (!imageUrl) {
       navigate("/");
     }
-  }, [profileImage]);
+  }, [imageUrl]);
 
   const handleButton = () => {
     navigate("/result");
@@ -25,6 +26,8 @@ const Image = () => {
 
   const handleBack = () => {
     setProfileImage(undefined);
+    setImageUrl(undefined);
+    navigate("/");
   };
 
   return (
