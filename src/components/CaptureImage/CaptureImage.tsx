@@ -5,9 +5,9 @@ import { useNavigate } from "react-router";
 import Webcam from "react-webcam";
 
 const CaptureImage = (): JSX.Element => {
-  const webcamRef = React.useRef<any>(null);
+  const webcamRef = React.useRef<Webcam>(null);
   const navigate = useNavigate();
-  const [imgSrc, setImgSrc] = useState<string | null>(null);
+  const [imgSrc, setImgSrc] = useState<any>(null);
 
   const capture = () => {
     if (webcamRef !== null && webcamRef.current !== null) {
@@ -15,7 +15,7 @@ const CaptureImage = (): JSX.Element => {
       setImgSrc(imageSrc);
       const captureAfter3s = () => {
         alert("사진이 찍혔습니다.");
-        navigate("/result");
+        //navigate("/image");
       };
       setTimeout(captureAfter3s, 3000);
     }
@@ -37,7 +37,7 @@ const CaptureImage = (): JSX.Element => {
   });
   return (
     <div>
-      <div className={"goBackPage"} onKeyUp={goBackPage}>
+      <div className={"goBackPage"} onClick={goBackPage}>
         <img src={BackPage} alt="" />
         <span>사진 선택하기</span>
       </div>
